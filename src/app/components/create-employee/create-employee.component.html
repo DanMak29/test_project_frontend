@@ -1,0 +1,73 @@
+<div >
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <form [formGroup]="form">
+          <fieldset>
+            <fieldset class="form-group">
+              <input type="text" class="form-control form-control-lg"
+                     placeholder="Surname" formControlName="surname">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Name"
+                     formControlName="name">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="email" class="form-control form-control-lg" placeholder="email"
+                     formControlName="email">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="tel" class="form-control form-control-lg" placeholder="number"
+                     formControlName="number">
+            </fieldset>
+
+            <fieldset class="form-group">
+              <mat-form-field appearance="fill" class="form-group">
+                <mat-label>Country</mat-label>
+                <mat-select
+                  [formControl]="country"
+                  name="country"
+                >
+                  <mat-option *ngFor="let country of countries" [value]="country.id">
+                    {{ country.name }}
+                  </mat-option>
+                </mat-select>
+
+              </mat-form-field>
+              <button mat-stroked-button class="btn" (click)="country.reset()">
+                Clear
+              </button>
+              <p></p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <mat-form-field appearance="fill" class="form-group">
+                <mat-label>City</mat-label>
+                <mat-select
+                  [formControl]="city"
+                  name="country"
+                >
+                  <mat-option *ngFor="let city of cities" [value]="city.id">
+                    {{ city.name }}
+                  </mat-option>
+                </mat-select>
+
+              </mat-form-field>
+              <button mat-stroked-button class="btn" (click)="city.reset()">
+                Clear
+              </button>
+              <p></p>
+            </fieldset>
+
+            <button class="btn btn-lg btn-primary pull-xs-right"
+                    type="submit" (click)="onSubmit()"
+                    [disabled]="!this.form.valid"
+                    >
+              CREATE
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
